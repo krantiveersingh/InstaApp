@@ -1,0 +1,18 @@
+
+<%= form_for([@comment,@post.comments.build]) do |f| %>
+<% if @post.errors.any? %>
+	<% @post.errors.full_messages.each do |msg| %> 
+	<div class="alert alert-danger"><%= msg %> </div>
+<% end %> 
+<% end %> 
+
+  <p>
+    <%= f.label :comment ,"Enter comment"%><br>
+    <%= f.text_area(:comment, {:class => 'form-control'}) %>
+  </p>
+ 
+  <p id="submit">
+  	<%= f.hidden_field :post_id , :value => @post.id %>
+    <%= f.submit(:submit, {:class => 'btn btn-primary', :style => 'float:right'}) %>
+  </p>
+<% end %> 

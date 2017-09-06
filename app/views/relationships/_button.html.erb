@@ -1,0 +1,8 @@
+
+ <% unless @user == current_user %>
+   <% if current_user.is_following?(@user.id) %>
+       <%= link_to "Unfollow" ,relationship_path(id: @user.id.to_s),data: { no_turbolink: true,remote: true }, :method => :patch,:class => 'btn btn-danger'%>
+    <% else %>
+         <%= link_to "Follow" ,relationships_path(id: @user.id.to_s) ,data: { no_turbolink: true,remote: true },:method => :post,:class => 'btn btn-success'%>
+    <% end %>
+<% end %>	
